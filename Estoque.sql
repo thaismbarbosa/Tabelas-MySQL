@@ -2,26 +2,26 @@ CREATE DATABASE estoque;
 USE estoque;
 
 CREATE TABLE produtos(
-	id_produto INT PRIMARY KEY AUTO_INCREMENT,
+    id_produto INT PRIMARY KEY AUTO_INCREMENT,
     nome_produto VARCHAR(100),
     quantidade INT,
     preco DECIMAL(10,2)
 );
+
 CREATE TABLE fornecedores(
-	id_fornecedor INT PRIMARY KEY AUTO_INCREMENT,
+    id_fornecedor INT PRIMARY KEY AUTO_INCREMENT,
     nome_fornecedor VARCHAR(100)
 );
 
 CREATE TABLE estoque(
-	id_estoque INT PRIMARY KEY AUTO_INCREMENT,
+    id_estoque INT PRIMARY KEY AUTO_INCREMENT,
     id_produto INT,
     id_fornecedor INT,
-	quantidade INT,
+    quantidade INT,
     data_entrada DATE,
     FOREIGN KEY (id_produto) REFERENCES produtos(id_produto),
     FOREIGN KEY (id_fornecedor) REFERENCES fornecedores(id_fornecedor)
-    );
-
+);
 
 INSERT INTO produtos (nome_produto, quantidade, preco) VALUES
 ('Luva de Boxe Profissional', 15, 199.90),
