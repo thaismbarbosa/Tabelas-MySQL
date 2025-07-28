@@ -14,4 +14,4 @@ VALUES
 ('Kimono Jiu-Jitsu Infantil', 10, 249.50),
 ('Corda de Pular Speed', 30, 39.99);
 
-
+SELECT * FROM produtos;
