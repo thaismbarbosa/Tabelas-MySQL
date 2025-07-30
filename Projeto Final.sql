@@ -2,25 +2,25 @@ CREATE DATABASE estoque;
 USE estoque;
 
 CREATE TABLE produtos(
-	id_produto INT PRIMARY KEY AUTO_INCREMENT,
+    id_produto INT PRIMARY KEY AUTO_INCREMENT,
     nome_produto VARCHAR(100),
     quantidade INT,
     preco DECIMAL(10,2)
 );
 CREATE TABLE fornecedores(
-	id_fornecedor INT PRIMARY KEY AUTO_INCREMENT,
+    id_fornecedor INT PRIMARY KEY AUTO_INCREMENT,
     nome_fornecedor VARCHAR(100)
 );
 
 CREATE TABLE estoque(
-	id_estoque INT PRIMARY KEY AUTO_INCREMENT,
+    id_estoque INT PRIMARY KEY AUTO_INCREMENT,
     id_produto INT,
     id_fornecedor INT,
-	quantidade INT,
+    quantidade INT,
     data_entrada DATE,
     FOREIGN KEY (id_produto) REFERENCES produtos(id_produto),
     FOREIGN KEY (id_fornecedor) REFERENCES fornecedores(id_fornecedor)
-    );
+);
 
 
 INSERT INTO produtos (nome_produto, quantidade, preco) VALUES
@@ -49,19 +49,19 @@ RIGHT JOIN produtos AS p ON e.id_produto = p.id_produto
 RIGHT JOIN fornecedores AS f ON e.id_fornecedor = f.id_fornecedor;
 
 CREATE TABLE vendas(
-	id_venda INT PRIMARY KEY AUTO_INCREMENT,
+    id_venda INT PRIMARY KEY AUTO_INCREMENT,
     data_venda DATETIME DEFAULT CURRENT_TIMESTAMP,
     total_venda DECIMAL(10,02)
 );
 
 CREATE TABLE itens_venda(
-	id_item_venda INT PRIMARY KEY AUTO_INCREMENT,
+    id_item_venda INT PRIMARY KEY AUTO_INCREMENT,
     id_venda INT NOT NULL,
     id_produto INT NOT NULL,
     quantidade_vendida INT NOT NULL,
     preco_unitario DECIMAL(10,02) NOT NULL,
     FOREIGN KEY (id_venda) REFERENCES vendas(id_venda),
-	FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
+    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
 );
 
 INSERT INTO vendas (total_venda) VALUES (439.79);
