@@ -19,7 +19,7 @@ cursor = conexao.cursor()
 #                nome VARCHAR(100),
 #                descricao VARCHAR(255),
 #                quantidade INT,
-#                preco DECIMAL(10,02));""")
+#                preco DECIMAL(10,2));""")
 class Produto:
     def __init__(self, nome_produto, quantidade, preco, id=None):
         self.id = id
@@ -66,3 +66,4 @@ listar_produtos()
 
 cursor.close()
 conexao.close()
+
